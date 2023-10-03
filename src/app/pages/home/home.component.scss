@@ -408,6 +408,10 @@
                                     font-style: normal;
                                     font-weight: 500;
                                     line-height: 24px;
+                                    transition: color;
+                                    &:hover{
+                                        color: #F4D329;
+                                    }
                                 }
                             }
                         }
