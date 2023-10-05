@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     window.scrollTo({top: 0, behavior: 'smooth'});
+    this.startInterval();
   }
 
   ngAfterViewInit() {
@@ -49,7 +50,9 @@ export class HomeComponent implements OnInit, AfterViewInit{
       const windowHeight = window.innerHeight;
       if (windowHeight > distanceFromTop + 10) {
         this.renderer.addClass(this.element?.nativeElement, 'animationCarousel');
-        setTimeout(this.addClassHover, 3000)
+        setTimeout(() => {
+          this.addClassHover();
+        }, 3000);
       }
     }
   }
@@ -72,6 +75,14 @@ export class HomeComponent implements OnInit, AfterViewInit{
 
   feedbackPosition(position: number){
     this.indexFeedbackList = position;
-    console.log(this.indexFeedbackList)
   }
+
+  startInterval() {
+    const listLength = this.feedbackList.length;
+
+    setInterval(() => {
+      this.indexFeedbackList = (this.indexFeedbackList + 1) % listLength;
+    }, 5000);
+  }
+
 }
