@@ -82,7 +82,6 @@ export class HomeComponent implements OnInit, AfterViewInit{
 
     setInterval(() => {
       this.indexFeedbackList = (this.indexFeedbackList + 1) % listLength;
-    }, 5000);
+    }, 8000);
   }
-
 }

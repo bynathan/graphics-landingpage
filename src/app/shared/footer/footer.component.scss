@@ -128,6 +128,35 @@
     }
 }
 
+.back-to-top{
+    transform: translateY(115px);
+    opacity: 0;
+    width: 88px;
+    min-width: 88px;
+    height: 88px;
+    min-height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 25px;
+    right: 15px;
+    border-radius: 15px;
+    background: rgba(16, 33, 39, 0.20);
+    backdrop-filter: blur(2.5px);
+    transition: all .8s;
+    &.visible{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    svg{
+        width: 30px;
+        min-width: 30px;
+        height: 17px;
+        min-width: 17px;
+    }
+}
+
 /*Media queries*/
 
 @media(min-width: 768px) {
@@ -243,5 +272,8 @@
                 display: none;
             }
         }
+    }
+    .back-to-top{
+        display: none;
     }
 }

@@ -36,4 +36,69 @@ body{
     &.menu-open{
         overflow: hidden;
     }
+    &.calculate-page{
+        .menu{
+            section{
+                background: #085B91 !important;
+            }
+        }
+        .header{
+            .desktop{
+                div{
+                    a{
+                        svg{
+                            fill: #1C3955 !important;
+                        }
+                    }
+                }
+                nav{
+                    ul{
+                        li{
+                            a{
+                                color: #1C3955 !important;
+                                &:hover{
+                                    color: #0B6AC9 !important;
+                                }
+                            }
+                        }
+                    }
+                }
+                .buttons{
+                    button{
+                        &:nth-child(1){
+                             display: none !important;
+                        }
+                        &:nth-child(2){
+                            display: flex !important;
+                        }
+                    }
+                }
+                svg{
+                    display: flex;
+                    margin: 0;
+                    width: 128px;
+                    min-width: 128px;
+                    height: 104px;
+                    min-height: 104px;
+                    .letter{
+                        fill: #085B91 !important;
+                    }
+                }
+            }
+        }
+    }
+    .header{
+        .desktop{
+            .buttons{
+                button{
+                    &:nth-child(1){
+                        display: flex !important;
+                    }
+                    &:nth-child(2){
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
 }
