@@ -22,30 +22,54 @@
                 </div>
                 <ng-container>
                     <form class="calc1" action="">
-                        <label for="" class="select">
-                            <p>*Selecione o tipo de instalação</p>
-                            <input type="text" value="Residencial">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <path d="M11.7337 2.91648L2.14923 2.91648C2.0522 2.91682 1.95708 2.94614 1.87412 3.00129C1.79116 3.05644 1.7235 3.13533 1.67843 3.22947C1.63335 3.32361 1.61256 3.42944 1.61831 3.53556C1.62405 3.64169 1.6561 3.74408 1.71101 3.83173L6.50325 11.4151C6.70186 11.7295 7.18002 11.7295 7.37916 11.4151L12.1714 3.83173C12.2269 3.74427 12.2594 3.64182 12.2654 3.53552C12.2715 3.42922 12.2508 3.32314 12.2057 3.2288C12.1606 3.13445 12.0928 3.05546 12.0095 3.0004C11.9263 2.94534 11.8309 2.91632 11.7337 2.91648Z" fill="white"/>
-                            </svg>
-                        </label>
-                        <label for="" class="select">
-                            <p>*Selecione seu município</p>
-                            <input type="text" value="Rio de Janeiro">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <path d="M11.7337 2.91648L2.14923 2.91648C2.0522 2.91682 1.95708 2.94614 1.87412 3.00129C1.79116 3.05644 1.7235 3.13533 1.67843 3.22947C1.63335 3.32361 1.61256 3.42944 1.61831 3.53556C1.62405 3.64169 1.6561 3.74408 1.71101 3.83173L6.50325 11.4151C6.70186 11.7295 7.18002 11.7295 7.37916 11.4151L12.1714 3.83173C12.2269 3.74427 12.2594 3.64182 12.2654 3.53552C12.2715 3.42922 12.2508 3.32314 12.2057 3.2288C12.1606 3.13445 12.0928 3.05546 12.0095 3.0004C11.9263 2.94534 11.8309 2.91632 11.7337 2.91648Z" fill="white"/>
-                            </svg>
-                        </label>
-                        <label for="" class="type">
-                            <p>*Insira o valor da sua fatura mais alta (últimos 12 meses)</p>
-                            <input type="text" value="0">
+                        <section class="select">
+                            <label for="type">*Selecione o tipo de instalação</label>
+                            <form [formGroup]="typeForm">
+                                <input
+                                  name="type"
+                                  id="type"
+                                  formControlName="type"
+                                  [typeahead]="types"
+                                  [typeaheadOptionsLimit]="7"
+                                  [typeaheadMinLength]="0"
+                                  placeholder="Selecionar"
+                                  (click)="this.typesCtrl.setValue('')"
+                                  readonly
+                                >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M11.7337 2.91648L2.14923 2.91648C2.0522 2.91682 1.95708 2.94614 1.87412 3.00129C1.79116 3.05644 1.7235 3.13533 1.67843 3.22947C1.63335 3.32361 1.61256 3.42944 1.61831 3.53556C1.62405 3.64169 1.6561 3.74408 1.71101 3.83173L6.50325 11.4151C6.70186 11.7295 7.18002 11.7295 7.37916 11.4151L12.1714 3.83173C12.2269 3.74427 12.2594 3.64182 12.2654 3.53552C12.2715 3.42922 12.2508 3.32314 12.2057 3.2288C12.1606 3.13445 12.0928 3.05546 12.0095 3.0004C11.9263 2.94534 11.8309 2.91632 11.7337 2.91648Z" fill="white"/>
+                                </svg>
+                            </form>
+                        </section>
+                        <section class="select">
+                            <label for="muni">*Selecione seu município</label>
+                            <form [formGroup]="muniForm">
+                                <input
+                                  name="muni"
+                                  id="muni"
+                                  formControlName="muni"
+                                  [typeahead]="munis"
+                                  [typeaheadMinLength]="0"
+                                  placeholder="Selecionar"
+                                  (click)="this.munisCtrl.setValue('')"
+                                  readonly
+                                >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M11.7337 2.91648L2.14923 2.91648C2.0522 2.91682 1.95708 2.94614 1.87412 3.00129C1.79116 3.05644 1.7235 3.13533 1.67843 3.22947C1.63335 3.32361 1.61256 3.42944 1.61831 3.53556C1.62405 3.64169 1.6561 3.74408 1.71101 3.83173L6.50325 11.4151C6.70186 11.7295 7.18002 11.7295 7.37916 11.4151L12.1714 3.83173C12.2269 3.74427 12.2594 3.64182 12.2654 3.53552C12.2715 3.42922 12.2508 3.32314 12.2057 3.2288C12.1606 3.13445 12.0928 3.05546 12.0095 3.0004C11.9263 2.94534 11.8309 2.91632 11.7337 2.91648Z" fill="white"/>
+                                </svg>
+                            </form>
+                        </section>
+                        <section class="type">
+                            <label for="value">*Insira o valor da sua fatura mais alta (últimos 12 meses)</label>
+                            <input name="value" id="value" type="text" inputmode="numeric" value="0">
                             <p>R$</p>
-                        </label>
-                        <label class="submit">
+                        </section>
+                        <section class="submit">
                             <input type="button" value="Continuar">
-                        </label>
+                        </section>
                     </form>
                 </ng-container>
+                  
             </div>
         </div>
     </div>
