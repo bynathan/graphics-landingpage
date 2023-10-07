@@ -1239,31 +1239,12 @@
                     flex-direction: row;
                     column-gap: 20px;
                     .feedback{
-                        min-height: 528px;
+                        min-height: 526px;
                         max-width: 430px;
                         height: 100%;
                     }
                     .contact{
                         padding: 40px 90px 41px;
-                        h1{
-                            br{
-                                display: none;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media(max-width: 1306px){
-    .home{
-        section{
-            &:nth-child(5){
-                .cards{
-                    .feedback{
-                        min-height: 496px;
                     }
                 }
             }

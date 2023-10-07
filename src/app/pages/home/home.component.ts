@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
     window.scrollTo({top: 0, behavior: 'smooth'});
     this.startInterval();
+    document.getElementsByTagName('body')[0].classList.remove('calculate-page');
   }
 
   ngAfterViewInit() {
@@ -79,7 +80,6 @@ export class HomeComponent implements OnInit, AfterViewInit{
 
   startInterval() {
     const listLength = this.feedbackList.length;
-
     setInterval(() => {
       this.indexFeedbackList = (this.indexFeedbackList + 1) % listLength;
     }, 8000);
