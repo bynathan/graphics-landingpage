@@ -48,14 +48,13 @@
             background: #1C3955;
             overflow-y: auto;
             transform: translateX(-100%);
-            transition: transform 0.5s ease-in-out;
+            transition: transform 1.5s ease-out;
             &::-webkit-scrollbar{
                 width: 0;
             }
             &.open{
                 display: flex;
                 transform: translateX(0);
-                animation: modalOpen 0.5s ease-in-out;
             }
             .close{
                 width: 44px;
