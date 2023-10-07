@@ -4,24 +4,24 @@
         <h1>Calcule aqui seu investimento em Energia Solar.</h1>
         <div class="calc">
             <div>
-                <h1>Está pronto para<br> economizar?</h1>
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
-                        <g clip-path="url(#clip0_513_638)">
-                          <path d="M11.7257 2.21436H13.4982C13.8116 2.21436 14.1122 2.33476 14.3338 2.54909C14.5554 2.76342 14.6799 3.05411 14.6799 3.35721V14.7858C14.6799 15.0889 14.5554 15.3796 14.3338 15.5939C14.1122 15.8082 13.8116 15.9286 13.4982 15.9286H4.04494C3.73154 15.9286 3.43098 15.8082 3.20938 15.5939C2.98778 15.3796 2.86328 15.0889 2.86328 14.7858V3.35721C2.86328 3.05411 2.98778 2.76342 3.20938 2.54909C3.43098 2.33476 3.73154 2.21436 4.04494 2.21436H5.81743" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
-                          <path d="M10.544 1.07129H6.99904C6.34643 1.07129 5.81738 1.58296 5.81738 2.21415V2.78557C5.81738 3.41676 6.34643 3.92843 6.99904 3.92843H10.544C11.1966 3.92843 11.7257 3.41676 11.7257 2.78557V2.21415C11.7257 1.58296 11.1966 1.07129 10.544 1.07129Z" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
-                          <path d="M5.81738 6.78564H11.7257M5.81738 9.64279H11.7257M5.81738 12.4999H11.7257" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_513_638">
-                            <rect width="16.5432" height="16" fill="white" transform="translate(0.5 0.5)"/>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <p>Preencha a nossa calculadora abaixo.</p>
-                </div>
-                <ng-container>
-                    <form class="calc1" action="">
+                <ng-container *ngIf="steps == 0">
+                    <h1>Está pronto para<br> economizar?</h1>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                            <g clip-path="url(#clip0_513_638)">
+                              <path d="M11.7257 2.21436H13.4982C13.8116 2.21436 14.1122 2.33476 14.3338 2.54909C14.5554 2.76342 14.6799 3.05411 14.6799 3.35721V14.7858C14.6799 15.0889 14.5554 15.3796 14.3338 15.5939C14.1122 15.8082 13.8116 15.9286 13.4982 15.9286H4.04494C3.73154 15.9286 3.43098 15.8082 3.20938 15.5939C2.98778 15.3796 2.86328 15.0889 2.86328 14.7858V3.35721C2.86328 3.05411 2.98778 2.76342 3.20938 2.54909C3.43098 2.33476 3.73154 2.21436 4.04494 2.21436H5.81743" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M10.544 1.07129H6.99904C6.34643 1.07129 5.81738 1.58296 5.81738 2.21415V2.78557C5.81738 3.41676 6.34643 3.92843 6.99904 3.92843H10.544C11.1966 3.92843 11.7257 3.41676 11.7257 2.78557V2.21415C11.7257 1.58296 11.1966 1.07129 10.544 1.07129Z" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M5.81738 6.78564H11.7257M5.81738 9.64279H11.7257M5.81738 12.4999H11.7257" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_513_638">
+                                <rect width="16.5432" height="16" fill="white" transform="translate(0.5 0.5)"/>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <p>Preencha a nossa calculadora abaixo.</p>
+                    </div>
+                    <form action="">
                         <section class="select">
                             <label for="type">*Selecione o tipo de instalação</label>
                             <form [formGroup]="typeForm">
@@ -59,17 +59,106 @@
                                 </svg>
                             </form>
                         </section>
-                        <section class="type">
+                        <section class="value">
                             <label for="value">*Insira o valor da sua fatura mais alta (últimos 12 meses)</label>
-                            <input name="value" id="value" type="text" inputmode="numeric" value="0">
-                            <p>R$</p>
+                            <input name="value" id="value" type="text" inputmode="numeric" [(ngModel)]="value" value="0" appCurrencyFormat>
                         </section>
                         <section class="submit">
-                            <input type="button" value="Continuar">
+                            <input type="button" value="Continuar" (click)="nextSteps(1)" [disabled]="value == 'R$0,00' || !munisCtrl.value || !typesCtrl.value">
                         </section>
                     </form>
                 </ng-container>
-                  
+                <ng-container *ngIf="steps == 1">
+                    <h1>Falta pouco...</h1>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                            <g clip-path="url(#clip0_513_638)">
+                              <path d="M11.7257 2.21436H13.4982C13.8116 2.21436 14.1122 2.33476 14.3338 2.54909C14.5554 2.76342 14.6799 3.05411 14.6799 3.35721V14.7858C14.6799 15.0889 14.5554 15.3796 14.3338 15.5939C14.1122 15.8082 13.8116 15.9286 13.4982 15.9286H4.04494C3.73154 15.9286 3.43098 15.8082 3.20938 15.5939C2.98778 15.3796 2.86328 15.0889 2.86328 14.7858V3.35721C2.86328 3.05411 2.98778 2.76342 3.20938 2.54909C3.43098 2.33476 3.73154 2.21436 4.04494 2.21436H5.81743" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M10.544 1.07129H6.99904C6.34643 1.07129 5.81738 1.58296 5.81738 2.21415V2.78557C5.81738 3.41676 6.34643 3.92843 6.99904 3.92843H10.544C11.1966 3.92843 11.7257 3.41676 11.7257 2.78557V2.21415C11.7257 1.58296 11.1966 1.07129 10.544 1.07129Z" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M5.81738 6.78564H11.7257M5.81738 9.64279H11.7257M5.81738 12.4999H11.7257" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_513_638">
+                                <rect width="16.5432" height="16" fill="white" transform="translate(0.5 0.5)"/>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <p>Última etapa: suas informações.</p>
+                    </div>
+                    <form action="">
+                        <section class="type">
+                            <label for="name">*Digite seu nome </label>
+                            <input [(ngModel)]="name" name="name" id="name" type="text" placeholder="seu nome">
+                        </section>
+                        <section class="type">
+                            <label for="email">*Digite seu e-mail </label>
+                            <input [(ngModel)]="email" name="email" id="email" type="text" placeholder="seunome@gmail.com" appEmailFormat>
+                        </section>
+                        <section class="type">
+                            <label for="number">*Digite seu telefone </label>
+                            <input [(ngModel)]="phone" name="number" id="number" type="text" placeholder="(DDD) 9999-9999" appPhoneFormat>
+                        </section>
+                        <section class="text">
+                            <p>Sua privacidade é nossa prioridade.<br> Dados protegidos pela Lei de Proteção de Dados.</p>
+                        </section>
+                        <section class="submit showresult">
+                            <input type="button" value="Ver resultado" (click)="nextSteps(2)" [disabled]="!name || !email || !phone">
+                        </section>
+                    </form>
+                </ng-container>
+                <ng-container *ngIf="steps == 2">
+                    <div class="skeleton-container">
+                        <div class="skeleton"></div>
+                        <div class="skeleton"></div>
+                        <div class="skeleton"></div>
+                        <div class="skeleton"></div>
+                        <div class="skeleton"></div>
+                        <div class="skeleton"></div>
+                        <div class="skeleton"></div>
+                    </div>
+                    <div class="calculating">
+                        <input type="button" value="{{buttonText}}">
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="steps == 3">
+                    <h1>Resultado</h1>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                            <g clip-path="url(#clip0_513_638)">
+                              <path d="M11.7257 2.21436H13.4982C13.8116 2.21436 14.1122 2.33476 14.3338 2.54909C14.5554 2.76342 14.6799 3.05411 14.6799 3.35721V14.7858C14.6799 15.0889 14.5554 15.3796 14.3338 15.5939C14.1122 15.8082 13.8116 15.9286 13.4982 15.9286H4.04494C3.73154 15.9286 3.43098 15.8082 3.20938 15.5939C2.98778 15.3796 2.86328 15.0889 2.86328 14.7858V3.35721C2.86328 3.05411 2.98778 2.76342 3.20938 2.54909C3.43098 2.33476 3.73154 2.21436 4.04494 2.21436H5.81743" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M10.544 1.07129H6.99904C6.34643 1.07129 5.81738 1.58296 5.81738 2.21415V2.78557C5.81738 3.41676 6.34643 3.92843 6.99904 3.92843H10.544C11.1966 3.92843 11.7257 3.41676 11.7257 2.78557V2.21415C11.7257 1.58296 11.1966 1.07129 10.544 1.07129Z" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M5.81738 6.78564H11.7257M5.81738 9.64279H11.7257M5.81738 12.4999H11.7257" stroke="#0B6AC9" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_513_638">
+                                <rect width="16.5432" height="16" fill="white" transform="translate(0.5 0.5)"/>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <p>Cálculos gerados de acordo com o seu<br> consumo de energia.</p>
+                    </div>
+                    <form action="">
+                        <section class="result">
+                            <p>*Investimento mínimo:</p>
+                            <div>{{investmentMin}}</div>
+                        </section>
+                        <section class="result">
+                            <p>Investimento máximo:</p>
+                            <div>{{investmentMax}}</div>
+                        </section>
+                        <section class="text">
+                            <p class="result">O valor fornece apenas o custo estimado do kit de energia solar, excluindo custos de homologação e instalação, que variam conforme fatores específicos do projeto. Para mais informações entre em contato.</p>
+                        </section>
+                        <section class="submit button">
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                                    <path d="M26.9874 6.95559C25.6886 5.64365 24.1416 4.60345 22.4365 3.89566C20.7315 3.18787 18.9026 2.82666 17.0566 2.83309C9.32155 2.83309 3.01739 9.13726 3.01739 16.8723C3.01739 19.3514 3.66905 21.7598 4.88739 23.8848L2.90405 31.1664L10.3416 29.2114C12.3957 30.3306 14.7049 30.9256 17.0566 30.9256C24.7916 30.9256 31.0957 24.6214 31.0957 16.8864C31.0957 13.1323 29.6366 9.60476 26.9874 6.95559ZM17.0566 28.5456C14.9599 28.5456 12.9057 27.9789 11.1066 26.9164L10.6816 26.6614L6.26155 27.8231L7.43739 23.5164L7.15405 23.0773C5.98919 21.2171 5.37067 19.067 5.36905 16.8723C5.36905 10.4406 10.6107 5.19893 17.0424 5.19893C20.1591 5.19893 23.0916 6.41726 25.2874 8.62726C26.3747 9.70954 27.2363 10.9969 27.8224 12.4146C28.4084 13.8324 28.7073 15.3523 28.7016 16.8864C28.7299 23.3181 23.4882 28.5456 17.0566 28.5456ZM23.4599 19.8189C23.1057 19.6489 21.3774 18.7989 21.0657 18.6714C20.7399 18.5581 20.5132 18.5014 20.2724 18.8414C20.0316 19.1956 19.3657 19.9889 19.1674 20.2156C18.9691 20.4564 18.7566 20.4848 18.4024 20.3006C18.0482 20.1306 16.9149 19.7481 15.5832 18.5581C14.5349 17.6231 13.8407 16.4756 13.6282 16.1214C13.4299 15.7673 13.5999 15.5831 13.7841 15.3989C13.9399 15.2431 14.1382 14.9881 14.3082 14.7898C14.4782 14.5914 14.5491 14.4356 14.6624 14.2089C14.7757 13.9681 14.7191 13.7698 14.6341 13.5998C14.5491 13.4298 13.8407 11.7014 13.5574 10.9931C13.2741 10.3131 12.9766 10.3981 12.7641 10.3839H12.0841C11.8432 10.3839 11.4749 10.4689 11.1491 10.8231C10.8374 11.1773 9.93072 12.0273 9.93072 13.7556C9.93072 15.4839 11.1916 17.1556 11.3616 17.3823C11.5316 17.6231 13.8407 21.1648 17.3541 22.6806C18.1899 23.0489 18.8416 23.2614 19.3516 23.4173C20.1874 23.6864 20.9524 23.6439 21.5616 23.5589C22.2416 23.4598 23.6441 22.7089 23.9274 21.8873C24.2249 21.0656 24.2249 20.3714 24.1257 20.2156C24.0266 20.0598 23.8141 19.9889 23.4599 19.8189Z" fill="white"/>
+                                </svg>
+                                Entrar em contato
+                            </button>
+                        </section>
+                    </form>
+                </ng-container>
             </div>
         </div>
     </div>

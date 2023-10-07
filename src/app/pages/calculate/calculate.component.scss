@@ -29,9 +29,6 @@
             font-weight: 600;
             line-height: normal;
             margin: 0 0 0 20px;
-            br{
-                display: none;
-            }
         }
         .calc{
             position: absolute;
@@ -39,6 +36,7 @@
             left: 0;
             padding: 0 15px;
             div{
+                height: 603px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -54,13 +52,17 @@
                     font-weight: 600;
                     line-height: 48px;
                     margin: 0 0 8px 0;
+                    animation: enterContent .8s linear;
                 }
                 div{
+                    height: unset;
+                    min-height: unset;
                     display: flex;
                     flex-direction: row;
                     column-gap: 8px;
                     padding: 0;
                     margin: 0 0 30px 0;
+                    animation: enterContent .8s linear;
                     svg{
                         width: 16px;
                         min-width: 16px;
@@ -78,6 +80,12 @@
                     }
                 }
                 form{
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    row-gap: 15px;
+                    animation: enterContent .8s linear;
                     section{
                         display: flex;
                         flex-direction: column;
@@ -139,8 +147,39 @@
                             }
                         }
                         &.type{
+                            input{
+                                min-height: 56px;
+                                border-radius: 10px;
+                                background: #EFEFEF;
+                                border: none;
+                                padding: 15px 26px;
+                                color: #1C3955;
+                                font-family: 'Work Sans', sans-serif;
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 24px;
+                                cursor: pointer;
+                                &:focus{
+                                    outline: none;
+                                    border: none;
+                                    box-shadow: none;
+                                }
+                                &::placeholder{
+                                    color: #AAA;
+                                    font-family: 'Work Sans', sans-serif;
+                                    font-size: 12px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: 16px;
+                                }
+                            }
+
+                        }
+                        &.value{
                             position: relative;
                             input{
+                                text-align: center;
                                 border: none;
                                 min-height: 56px;
                                 border-radius: 10px;
@@ -151,27 +190,70 @@
                                 font-style: normal;
                                 font-weight: 600;
                                 line-height: 24px;
-                                padding: 15px 15px 15px 56px;
+                                padding: 15px 15px 15px 15px;
                                 &:focus{
                                     outline: none;
                                     border: none;
                                     box-shadow: none;
                                 }
-                                & ~ p{
-                                    width: unset;
-                                    color: #1C3955;
-                                    font-family: 'Work Sans', sans-serif;
-                                    font-size: 24px;
-                                    font-style: normal;
-                                    font-weight: 600;
-                                    line-height: 24px;
-                                    position: absolute;
-                                    top: 41px;
-                                    left: 22px;
+                            }
+                        }
+                        &.text{
+                            p{
+                                color: #5F6F80;
+                                text-align: center;
+                                font-family: 'Work Sans', sans-serif;
+                                font-size: 12px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 16px;
+                                margin: 0 0 3px 0;
+                                &.result{
+                                    min-height: 64px;
+                                    max-height: 64px;
+                                    margin: 0 0 47px 0;
+                                }
+                            }
+                        }
+                        &.result{
+                            p{
+                                color: #1C3955;
+                                font-family: 'Work Sans', sans-serif;
+                                font-size: 12px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 16px;
+                                margin: 0;
+                            }
+                            div{
+                                height: unset;
+                                min-height: 56px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 10px;
+                                color: #FFF;
+                                text-align: center;
+                                font-family: 'Work Sans', sans-serif;
+                                font-size: 24px;
+                                font-style: normal;
+                                font-weight: 600;
+                                line-height: 24px;
+                                margin: 0;
+                            }
+                            &:nth-child(1){
+                                div{
+                                    background: #5CC366;
+                                }
+                            }
+                            &:nth-child(2){
+                                div{
+                                    background: #E39C30;
                                 }
                             }
                         }
                         &.submit{
+                            margin: auto 0 0 0;
                             input{
                                 min-height: 62px;
                                 border: none;
@@ -184,17 +266,146 @@
                                 font-weight: 600;
                                 line-height: 24px;
                                 transition: transform .3s linear;
+                                &:disabled{
+                                    background: linear-gradient(180deg, #999999 0%, #666666 100%);
+                                    color: #ffffff;
+                                    cursor: not-allowed;
+                                    opacity: 0.6;
+                                    pointer-events: none;
+                                    border: none;
+                                    &:hover{
+                                        transform: scale(1);
+                                    }
+                                }
                                 &:hover{
                                     transform: scale(1.03);
                                 }
                             }
+                            &.showresult{
+                                input{
+                                    background: linear-gradient(180deg, #5CC366 0%, #5AA065 100%) !important;
+                                    &:disabled{
+                                        background: linear-gradient(180deg, #999999 0%, #666666 100%) !important;
+                                        color: #ffffff;
+                                        cursor: not-allowed;
+                                        opacity: 0.6;
+                                        pointer-events: none;
+                                        border: none;
+                                        &:hover{
+                                            transform: scale(1);
+                                        }
+                                    }
+                                }
+                            }
+                            &.button{
+                                button{
+                                    min-width: 253px;
+                                    min-height: 62px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    column-gap: 8px;
+                                    padding: 15px 20px;
+                                    border-radius: 10px;
+                                    border: none;
+                                    background: linear-gradient(180deg, #0B6AC9 0%, #004992 100%);
+                                    color: #FFF;
+                                    font-family: 'Work Sans', sans-serif;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    line-height: 32px;
+                                    cursor: pointer;
+                                    transition: transform .3s linear;
+                                    &:disabled{
+                                        background: linear-gradient(180deg, #999999 0%, #666666 100%);
+                                        color: #ffffff;
+                                        cursor: not-allowed;
+                                        opacity: 0.6;
+                                        pointer-events: none;
+                                        border: none;
+                                        &:hover{
+                                            transform: scale(1);
+                                        }
+                                    }
+                                    &:hover{
+                                        transform: scale(1.03);
+                                    }
+                                    svg{
+                                        width: 32px;
+                                        min-width: 32px;
+                                        height: 32px;
+                                        min-height: 32px;
+                                        transition: all .2s;
+                                    }
+                                }
+                            }
                         }
                     }
-                    &.calc1{
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        row-gap: 15px;
+                }
+                .skeleton-container{
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    animation: enterContent .8s linear;
+                    .skeleton{
+                        width: 100%;
+                        background: linear-gradient(90deg, #E8E8E8 25%, #e0e0e0 50%, #E8E8E8 75%);
+                        background-size: 200% 100%;
+                        animation: loading 1.5s infinite;
+                        border-radius: 10px;
+                        &:nth-child(1){
+                            max-width: 210px;
+                            height: 40px;
+                            margin: 0 0 8px 0;
+                        }
+                        &:nth-child(2){
+                            height: 21px;
+                            margin: 0 0 4px 0;
+                        }
+                        &:nth-child(3){
+                            max-width: 196px;
+                            height: 21px;
+                            margin: 0 0 17px 0;
+                        }
+                        &:nth-child(4){
+                            height: 80px;
+                            margin: 0 0 15px 0;
+                        }
+                        &:nth-child(5){
+                            height: 80px;
+                            margin: 0 0 16px 0;
+                        }
+                        &:nth-child(6){
+                            height: 21px;
+                            margin: 0 0 4px 0;
+                        }
+                        &:nth-child(7){
+                            height: 21px;
+                            margin: 0 0 63px 0;
+                        }
+                    }
+                }
+                .calculating{
+                    margin: auto 0 0 0;
+                    animation: enterContent .8s linear;
+                    input{
+                        min-height: 62px;
+                        border: none;
+                        border-radius: 10px;
+                        background: linear-gradient(180deg, #5CC366 0%, #5AA065 100%) !important;
+                        color: #FFF;
+                        font-family: 'Work Sans', sans-serif;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 24px;
+                        transition: transform .3s linear;
+                        &:hover {
+                          transform: scale(1.03);
+                        }
+                        animation: loadingButton 1.5s ease-in-out infinite;
                     }
                 }
             }
@@ -203,6 +414,38 @@
     .gradient{
         min-height: 493px;
         background: linear-gradient(180deg, #9DBBD0 -49.68%, rgba(255, 255, 255, 0) 186.21%);
+    }
+}
+
+/*Animations style*/
+
+@keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+}
+
+@keyframes loadingButton {
+    0% {
+       transform: scale(1.03);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.03);
+    }
+}
+
+@keyframes enterContent{
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
 }
 
@@ -223,8 +466,31 @@
                         p{
                             font-size: 14px;
                             line-height: 14px;
+                            br{
+                                display: none;
+                            }
                         }
                     }
+                    form{
+                        section{
+                            &.text{
+                                p{
+                                    margin: 0 0 6px 0;
+                                    &.result{
+                                        margin: 0 0 53px 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .skeleton-container{
+                        .skeleton{
+                            &:nth-child(7){
+                                height: 21px;
+                                margin: 0 0 67px 0 !important;
+                            }
+                        }
+                    } 
                 }
             }
         }
@@ -326,10 +592,6 @@
                 max-width: 420px;
                 position: unset;
                 padding: 0;
-                h1{
-                    br{
-                    }
-                }
                 div{
                     padding: 40px;
                 }

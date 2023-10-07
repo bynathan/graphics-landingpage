@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,9 @@ import { CalculateComponent } from './pages/calculate/calculate.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CurrencyFormatDirective } from './currency-format.directive';
+import { EmailFormatDirective } from './email-format.directive';
+import { PhoneFormatDirective } from './phone-format.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     CalculateComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    CurrencyFormatDirective,
+    EmailFormatDirective,
+    PhoneFormatDirective
   ],
   imports: [
     BrowserModule,
@@ -27,7 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TypeaheadModule.forRoot(),
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

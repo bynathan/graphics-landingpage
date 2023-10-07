@@ -88,6 +88,23 @@ body{
                     }
                 }
             }
+            &-fixed{
+                &.visible{
+                    transform: translateY(-100%) !important;
+                }
+                .desk{
+                    .buttons{
+                        button{
+                            &:nth-child(1){
+                                display: flex !important;
+                            }
+                            &:nth-child(2){
+                                display: none !important;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     .header{
@@ -99,6 +116,20 @@ body{
                     }
                     &:nth-child(2){
                         display: none !important;
+                    }
+                }
+            }
+        }
+        &-fixed{
+            .desk{
+                .buttons{
+                    button{
+                        &:nth-child(1){
+                            display: flex !important;
+                        }
+                        &:nth-child(2){
+                            display: none !important;
+                        }
                     }
                 }
             }

@@ -154,6 +154,180 @@
             }
         }
     }
+    &-fixed{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 9;
+        transition: transform .8s;
+        transform: translateY(-100%);
+        &.visible{
+            transform: translateY(0);
+        }
+        .desk{
+            max-width: 1440px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 40px;
+            padding: 20px 70px;
+            margin: 0 auto;
+                svg{
+                    display: flex;
+                    margin: 0;
+                    width: 128px;
+                    min-width: 128px;
+                    height: 104px;
+                    min-height: 104px;
+                    .letter{
+                        fill: #004992;
+                    }
+                }
+                nav{
+                    max-width: 616px;
+                    ul{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin: 0;
+                        li{
+                            width: unset;
+                            list-style: none;
+                            a{
+                                text-decoration: none;
+                                color: #1C3955;
+                                text-align: center;
+                                font-family: 'Work Sans', sans-serif;
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 24px;
+                                transition: color .2s;
+                                &:hover{
+                                    color: #0B6AC9;
+                                }
+                            }
+                        }
+                    }
+                }
+                .buttons{
+                    max-width: unset;
+                    width: unset;
+                    button{
+                        &:nth-child(1){
+                            min-width: 253px;
+                            min-height: 62px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            column-gap: 8px;
+                            padding: 15px 20px;
+                            border-radius: 10px;
+                            border: none;
+                            background: linear-gradient(180deg, #FCEE21 -30.65%, #FFA800 158.06%);
+                            color: #1C3955;
+                            font-family: 'Work Sans', sans-serif;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 32px;
+                            cursor: pointer;
+                            transition: transform .3s linear;
+                            &:hover{
+                                transform: scale(1.03);
+                            }
+                            svg{
+                                width: 32px;
+                                min-width: 32px;
+                                height: 32px;
+                                min-height: 32px;
+                                transition: all .2s;
+                            }
+                        }
+                        &:nth-child(2){
+                            display: none;
+                            min-width: 253px;
+                            min-height: 62px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            column-gap: 8px;
+                            padding: 15px 20px;
+                            border-radius: 10px;
+                            background: linear-gradient(180deg, #0B6AC9 0%, #004992 100%);
+                            border: none;
+                            color: #FFF;
+                            font-family: 'Work Sans', sans-serif;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 32px;
+                            cursor: pointer;
+                            transition: transform .3s linear;
+                            &:hover{
+                                transform: scale(1.03);
+                            }
+                            svg{
+                                width: 32px;
+                                min-width: 32px;
+                                height: 32px;
+                                min-height: 32px;
+                                transition: all .2s;
+                            }
+                        }
+                    }
+                }
+                div{
+                    max-width: 100px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 0;
+                    a{
+                        width: unset;
+                        display: flex;
+                        text-decoration: none;
+                        cursor: pointer;
+                        svg{
+                            fill: #1C3955;
+                            transition: fill .2s;
+                        }
+                        &:hover{
+                            svg{
+                                fill: #0B6AC9;
+                            }
+                        }
+                        &:nth-child(1){
+                            svg{
+                                width: 13px;
+                                min-width: 13px;
+                                height: 18px;
+                                min-height: 18px;
+                            }
+                        }
+                        &:nth-child(2){
+                            svg{
+                                width: 20px;
+                                min-width: 20px;
+                                height: 20px;
+                                min-height: 20px;
+                            }
+                        }
+                        &:nth-child(3){
+                            svg{
+                                width: 26px;
+                                min-width: 26px;
+                                height: 26px;
+                                min-height: 26px;
+                            }
+                        }
+                    }
+                }
+        }
+    }
 }
 
 /*Animation style*/
@@ -180,6 +354,14 @@
                     right: 15px;
                 }
             }
+        }
+    }
+}
+
+@media(max-width: 1250px){
+    .header{
+        &-fixed{
+            display: none !important;
         }
     }
 }
