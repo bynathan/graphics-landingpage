@@ -39,4 +39,25 @@ export class HeaderComponent {
 
     this.prevScrollPos = currentScrollPos;
   }
+
+  isMobileHeaderVisible = true;
+  prevMobileScrollPos = window.pageYOffset;
+
+  onMobileScroll(event: Event): void {
+    const currentScrollPos = window.pageYOffset;
+
+    if(currentScrollPos < 645){
+      this.isMobileHeaderVisible = true;
+    }
+
+    if(currentScrollPos > 645){
+      if (this.prevMobileScrollPos < currentScrollPos) {
+        this.isMobileHeaderVisible = true;
+      } else if(this.prevMobileScrollPos > currentScrollPos) {
+        this.isMobileHeaderVisible = false;
+      }
+    }
+
+    this.prevMobileScrollPos = currentScrollPos;
+  }
 }

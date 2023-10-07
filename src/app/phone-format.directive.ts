@@ -15,23 +15,43 @@ export class PhoneFormatDirective {
     input.value = formattedValue;
   }
 
+  @HostListener('keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    const input = this.el.nativeElement as HTMLInputElement;
+    const key = event.key;
+
+    if (key === 'Backspace') {
+      // Permite apagar caracteres
+      return;
+    }
+
+    if (!this.isNumeric(key)) {
+      // Impede a entrada de caracteres não numéricos
+      event.preventDefault();
+    }
+  }
+
+  private isNumeric(key: string): boolean {
+    return /^\d+$/.test(key);
+  }
+
   private formatPhoneNumber(value: string): string {
-    if (value.length < 2) {
+    if (value.length <= 2) {
       return value;
     }
 
-    let formattedValue = `(${value.substring(0, 2)}) `;
-    
-    if (value.length >= 3) {
-      formattedValue += `${value[2]} `;
+    let formattedValue = `(${value.substring(0, 2)})`;
+
+    if (value.length > 2) {
+      formattedValue += ` ${value.substring(2, 3)}`;
     }
 
-    if (value.length >= 4) {
-      formattedValue += `${value.substring(3, 7)}-`;
+    if (value.length > 3) {
+      formattedValue += ` ${value.substring(3, 7)}`;
     }
 
-    if (value.length >= 8) {
-      formattedValue += value.substring(7, 11);
+    if (value.length > 7) {
+      formattedValue += `-${value.substring(7, 11)}`;
     }
 
     return formattedValue;

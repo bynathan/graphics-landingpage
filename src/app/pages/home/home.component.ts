@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
     this.renderer.listen('window', 'scroll', () => {
       this.checkVisibility();
     });
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   addClassHover(){

@@ -2,6 +2,7 @@
     .desktop{
         display: none;
         z-index: 9;
+        cursor: pointer;
     }
     .menu{
         width: 42px;
@@ -337,6 +338,44 @@
                 }
         }
     }
+    .mobile-fixed{
+        transform: translateY(-100%);
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #FFF;
+        z-index: 8;
+        transition: transform .8s;
+        &.visible{
+            transform: translateY(0);
+        }
+        &__container{
+            padding: 13px 32px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .menu{
+                position: absolute;
+                top: 27px;
+                left: 32px;
+                z-index: 9;
+                section{
+                    background: #1C3955 !important;
+                }
+            }
+            .logo{
+                width: 68px;
+                min-width: 68px;
+                height: 54px;
+                min-height: 54px;
+            }
+        }
+    }
 }
 
 /*Animation style*/
@@ -456,6 +495,22 @@
                             min-height: 51px;
                         }
                     }
+                }
+            }
+        }
+        .mobile-fixed{
+            &__container{
+                padding: 25px 70px;
+                .menu{
+                    top: 44px;
+                    left: 70px;
+                    margin: auto 0;
+                }
+                .logo{
+                    width: 103px;
+                    min-width: 103px;
+                    height: 82px;
+                    min-height: 82px;
                 }
             }
         }
@@ -641,6 +696,9 @@
         }
         .menu{
             display: none;
+        }
+        .mobile-fixed{
+            display: none !important;
         }
     }
 }

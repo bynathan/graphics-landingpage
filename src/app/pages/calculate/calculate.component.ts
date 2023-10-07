@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -7,9 +7,13 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './calculate.component.html',
   styleUrls: ['./calculate.component.scss']
 })
-export class CalculateComponent implements OnInit{
+export class CalculateComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
     document.getElementsByTagName('body')[0].classList.add('calculate-page');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  ngAfterViewInit(): void {
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
