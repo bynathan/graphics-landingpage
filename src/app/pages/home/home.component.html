@@ -1,4 +1,4 @@
-<div class="home">
+<div class="home" id="home">
     <section>
         <img src="/assets/images/logo.svg" alt="Graprichs logo.">
         <h1>Economize <br><strong>Até 93%</strong><br> na sua conta de energia</h1>
@@ -30,7 +30,7 @@
             <div>
                 <img src="/assets/images/icon-calculator.png" alt="Icone de uma calculadora.">
                 <h1>Economia de Custos</h1>
-                <p>Economize dinheiro a longo prazo reduzindo em até 95% suas contas de energia.</p>
+                <p>Economize até 93% na conta de energia, com taxa mínima de R$ 20,00 a R$ 100,00 por região.</p>
             </div>
             <div>
                 <img src="/assets/images/icon-planet.png" alt="Icone de um planeta.">
@@ -46,11 +46,11 @@
         <div class="stamps">
             <div>
                 <img src="/assets/images/icon-elgin.svg" alt="Tcon da elgin.">
-                <p>Distribuidor<br><strong>autorizada Elgin</strong></p>
+                <p><strong>Revendedor e Integrador</strong><br>autorizado Elgin</p>
             </div>
             <div>
                 <img src="/assets/images/icon-worker.svg" alt="Icon de um trabalhador.">
-                <p><strong>Suporte Técnico</strong><br>e Garantia Própria</p>
+                <p><strong>Suporte Técnico</strong><br>e Garantia do Distribuidor</p>
             </div>
             <div>
                 <img src="/assets/images/icon-29.svg" alt="Icon do número vinte e nove.">
@@ -60,7 +60,7 @@
     </section>
     <section>
         <div class="title">
-            <h1>Criando soluções para residências, <br> empresas e condomínios.</h1>
+            <h1 id="services">Criando soluções para residências, <br> empresas e condomínios.</h1>
         </div>
         <div class="carousel" #carousel>
             <div class="sliders" id="sliders">
@@ -158,7 +158,7 @@
         </div>
     </section>
     <section>
-        <div class="title">
+        <div class="title" id="about">
             <h1>Conheça o processo de <br> economia da energia solar.</h1>
         </div>
         <div class="steps">
@@ -192,10 +192,10 @@
             <h1>Descubra por que nos<br> recomendam. Contate-nos.</h1>
         </div>
         <div class="cards">
-            <div class="feedback">
+            <div class="feedback" id="feedback">
                 <div class="profile" *ngFor="let feed of [feedbackList[indexFeedbackList]]">
                     <div>
-                        <img src="/assets/images/image-example.png" alt="Foto de quem fez o feedback.">
+                        <img src="{{ feed.image }}" alt="Foto de quem fez o feedback.">
                     </div>
                     <div>
                         <h1>{{ feed.name }}</h1>
@@ -209,20 +209,20 @@
                     </div>
                 </div>
             </div>
-            <div class="contact">
+            <div class="contact" id="contact">
                 <h1>Solicite seu orçamento conosco <br>hoje mesmo.</h1>
-                <a href="" target="_blank">
+                <a href="tel:21983720183" target="_blank">
                     <button class="size">
                         <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M26.5977 34.996C24.5782 34.9217 18.8552 34.1309 12.8614 28.1398C6.86911 22.1473 6.07957 16.4268 6.00385 14.4064C5.89166 11.3275 8.25044 8.33681 10.9752 7.16887C11.3034 7.02722 11.6627 6.97328 12.018 7.01237C12.3732 7.05145 12.7122 7.18221 13.0017 7.3918C15.2455 9.02663 16.7937 11.4999 18.1231 13.4446C18.4156 13.8719 18.5407 14.3918 18.4745 14.9053C18.4083 15.4188 18.1554 15.89 17.7641 16.2291L15.0281 18.2608C14.8959 18.3562 14.8029 18.4963 14.7662 18.6552C14.7296 18.814 14.7519 18.9808 14.829 19.1244C15.4488 20.2503 16.5511 21.9272 17.8132 23.1891C19.0767 24.451 20.8325 25.6259 22.0371 26.3157C22.1882 26.4005 22.366 26.4242 22.5339 26.3819C22.7019 26.3397 22.8473 26.2347 22.9403 26.0886L24.7213 23.3784C25.0487 22.9435 25.5318 22.6522 26.0692 22.5654C26.6067 22.4786 27.1569 22.6031 27.6046 22.9129C29.5777 24.2785 31.8804 25.7998 33.566 27.9576C33.7927 28.2491 33.9369 28.5961 33.9835 28.9623C34.0301 29.3286 33.9775 29.7007 33.8311 30.0397C32.6573 32.7779 29.6871 35.1096 26.5977 34.996Z" fill="white"/>
                         </svg>
                         <div>
                             <p>Telefone</p>
-                            <h1>(21) 99999-999</h1>
+                            <h1>(21) 98372-0183</h1>
                         </div>
                     </button>
                 </a>
-                <a href="" target="_blank">
+                <a href="mailto:contato@graphicsolar.com" target="_blank">
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
                             <path d="M34.1667 10.25H6.83333C6.38026 10.25 5.94573 10.43 5.62536 10.7504C5.30498 11.0707 5.125 11.5053 5.125 11.9583V29.0417C5.125 29.4947 5.30498 29.9293 5.62536 30.2496C5.94573 30.57 6.38026 30.75 6.83333 30.75H34.1667C34.6197 30.75 35.0543 30.57 35.3746 30.2496C35.695 29.9293 35.875 29.4947 35.875 29.0417V11.9583C35.875 11.5053 35.695 11.0707 35.3746 10.7504C35.0543 10.43 34.6197 10.25 34.1667 10.25Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
@@ -234,7 +234,7 @@
                         </div>
                     </button>
                 </a>
-                <a href="" target="_blank">
+                <a href="https://www.google.com/maps/place/Estr.+do+Moinho,+129+-+Campo+Grande,+Rio+de+Janeiro+-+RJ,+23040-550/data=!4m2!3m1!1s0x9be6b248e45a27:0xe111350ce46c6d39?sa=X&ved=2ahUKEwiF89Ls3euBAxWjpZUCHUeoDywQ8gF6BAgLEAA&ved=2ahUKEwiF89Ls3euBAxWjpZUCHUeoDywQ8gF6BAgOEAI" target="_blank">
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
                             <path d="M22.312 34.088C25.798 31.02 32 24.752 32 19C32 15.8174 30.7357 12.7652 28.4853 10.5147C26.2348 8.26428 23.1826 7 20 7C16.8174 7 13.7652 8.26428 11.5147 10.5147C9.26428 12.7652 8 15.8174 8 19C8 24.752 14.2 31.02 17.688 34.088C18.3242 34.6559 19.1472 34.9697 20 34.9697C20.8528 34.9697 21.6758 34.6559 22.312 34.088ZM16 19C16 17.9391 16.4214 16.9217 17.1716 16.1716C17.9217 15.4214 18.9391 15 20 15C21.0609 15 22.0783 15.4214 22.8284 16.1716C23.5786 16.9217 24 17.9391 24 19C24 20.0609 23.5786 21.0783 22.8284 21.8284C22.0783 22.5786 21.0609 23 20 23C18.9391 23 17.9217 22.5786 17.1716 21.8284C16.4214 21.0783 16 20.0609 16 19Z" fill="white"/>

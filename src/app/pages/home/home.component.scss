@@ -11,10 +11,10 @@
             background-size: cover;
             background-position: 61% -10px;
             img{
-                width: 68px;
-                min-width: 68px;
-                height: 54px;
-                min-height: 54px;
+                width: 90px;
+                min-width: 90px;
+                height: 72px;
+                min-height: 72px;
                 margin: 0 0 76px 0;
             }
             h1{
@@ -810,22 +810,6 @@
             &:nth-child(1){
                 padding: 29px 15px 72px;
             }
-            &:nth-child(2){
-                .cards{
-                    div{
-                        padding-left: 15px !important;
-                        padding-right: 15px !important;
-                    }
-                }
-                .stamps{
-                    padding: 0 15px;
-                    div{
-                        p{
-                            font-size: 18px;
-                        }
-                    }
-                }
-            }
             &:nth-child(3){
                 .title{
                     padding: 0 15px;
@@ -878,11 +862,50 @@
     }
 }
 
+@media(max-width: 420px){
+    .home{
+        section{
+            &:nth-child(2){
+                .cards{
+                    div{
+                        padding-left: 15px !important;
+                        padding-right: 15px !important;
+                    }
+                }
+                .stamps{
+                    padding: 0 15px;
+                    div{
+                        p{
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media(min-width: 420px){
     .home{
         section{
             &:nth-child(1){
                 background-position: 61% center;
+            }
+            &:nth-child(2){
+                .cards{
+                    div{
+                        padding-left: 15px !important;
+                        padding-right: 15px !important;
+                    }
+                }
+                .stamps{
+                    padding: 0 15px;
+                    div{
+                        p{
+                            font-size: 18px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -1015,7 +1038,6 @@
                     }
                 }
                 .stamps{
-                    width: 604px;
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
@@ -1024,6 +1046,7 @@
                     column-gap: 35px;
                     row-gap: 45px;
                     margin: 0 0 100px 0;
+                    padding: 0 59px;
                     div{
                         column-gap: 30px;
                         &:nth-child(1){
@@ -1171,10 +1194,11 @@
                 }
                 .stamps{
                     width: 100%;
-                    max-width: 1080px;
+                    max-width: 1440px;
                     justify-content: space-between;
                     flex-wrap: unset;
                     column-gap: unset;
+                    padding: 0 70px;
                     margin: 0 0 80px 0;
                 }
             }

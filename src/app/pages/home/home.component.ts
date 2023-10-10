@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit, AfterViewInit{
   ]
 
   public feedbackList = [
-    { name: 'Juliana Silva', profession: 'Arquiteta', feed: 'Figma ipsum component variant main layer. Scrolling rotate plugin device union bullet italic. Group scale opacity rectangle style italic. Flatten flows rectangle stroke opacity pixel vector. Shadow community comment list scale bold stroke bullet. Edit component layout select star list frame auto layout text.' },
-    { name: '2', profession: 'aaa', feed: '1' },
-    { name: '3', profession: 'bbb', feed: '2' },
-    { name: '4', profession: 'b', feed: '3' },
+    { name: 'Vander S.Abreu', image: '/assets/images/image-feedback1.png', profession: 'Cliente', feed: 'Projeto e profissionais excelentes!Engenheiro Flávio e equipe administrativa/financeira cumpriu todos os requisitos, com um bom custo/benefício.' },
+    { name: 'Fernanda Stephane', image: '/assets/images/image-feedback2.png', profession: 'Cliente', feed: 'Atendimento de excelência, trabalho de qualidade, tiraram todas as minhas dúvidas, super indico minha experiência foi ótima.' },
+    { name: 'Marceli Feliciano', image: '/assets/images/image-feedback3.png', profession: 'Cliente', feed: 'Melhor lugar pra colocar sua energia solar, eu aprovo e indico. 😎😉' },
+    { name: 'Gaby Leono', image: '/assets/images/image-feedback4.png', profession: 'Cliente', feed: 'Empresa, comprometida. Entrega realmente aquilo que promete! Super indico!' },
   ]
 
   constructor(private renderer: Renderer2) {}
@@ -47,17 +47,18 @@ export class HomeComponent implements OnInit, AfterViewInit{
   };
 
   checkVisibility() {
-    if (this.element) {
-      const distanceFromTop = this.element.nativeElement.getBoundingClientRect().top + 10;
+    if (this.element && window.scrollY > 0) {
+      const rect = this.element.nativeElement.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      if (windowHeight > distanceFromTop + 10) {
-        this.renderer.addClass(this.element?.nativeElement, 'animationCarousel');
+      if (rect.top + 10 < windowHeight) {
+        this.renderer.addClass(this.element.nativeElement, 'animationCarousel');
         setTimeout(() => {
           this.addClassHover();
         }, 3000);
       }
     }
   }
+  
 
   nextStep(){
     if(this.indexStepsList < 4){

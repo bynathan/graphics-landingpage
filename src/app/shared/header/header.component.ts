@@ -60,4 +60,20 @@ export class HeaderComponent {
 
     this.prevMobileScrollPos = currentScrollPos;
   }
+
+  //Scroll to
+
+  scrollToElement(elementId: string) {
+    const element = document.getElementById(elementId);
+  
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const distanceToTopOfPage = rect.top + scrollTop;
+      window.scrollTo({
+        top: distanceToTopOfPage,
+        behavior: 'smooth',
+      });
+    }
+  }
 }
